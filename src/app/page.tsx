@@ -1,103 +1,242 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
+import { useMemo } from "react";
 import Image from "next/image";
+import Head from "next/head";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const randomQuote = useMemo(() => {
+    const quotes = [
+      {
+        quote:
+          "Science is what we understand well enough to explain to a computer. Art is everything else we do.",
+        author: "Donald Knuth",
+      },
+      {
+        quote:
+          "Good judgement comes from experience, and experience comes from bad judgement.",
+        author: "Frederick P. Brooks",
+      },
+      {
+        quote: "Experience is what you get when you didn't get what you wanted",
+        author: "Randy Pausch",
+      },
+    ];
+    return quotes[Math.floor(Math.random() * quotes.length)];
+  }, []);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+  const jobs = [
+    {
+      company: "Thoropass Inc.",
+      roles: [
+        {
+          title: "Technical Product Manager",
+          duration: "2023 — Present",
+          summary:
+            "Leveraged integrations to produce audit centric automations, reducing time in audit by 56% (42 → 19 days).",
+          bullets: [
+            "Launched unified integration pipeline adopted by 80% of customers.",
+            "Reduced auditor turnaround time by 40% through fetch-based workflows.",
+          ],
+        },
+        {
+          title: "Associate Product Manager",
+          duration: "2021 — 2023",
+          summary:
+            "Drove roadmap and delivery for third-party integrations, contributing to SOC 2 and ISO automation success.",
+          bullets: [
+            "Launched unified integration pipeline adopted by 80% of customers.",
+            "Reduced auditor turnaround time by 40% through fetch-based workflows.",
+          ],
+        },
+      ],
+    },
+    {
+      company: "Unisys Corporation",
+      roles: [
+        {
+          title: "Software Engineer",
+          duration: "2019 — 2021",
+          summary:
+            "Built enterprise-grade access control and authentication tools using Java and Angular for Fortune 500 clients.",
+          bullets: [
+            "Launched unified integration pipeline adopted by 80% of customers.",
+            "Reduced auditor turnaround time by 40% through fetch-based workflows.",
+          ],
+        },
+        {
+          title: "Associate Software Engineer",
+          duration: "2017 — 2019",
+          summary:
+            "Built enterprise-grade access control and authentication tools using Java and Angular for Fortune 500 clients.",
+          bullets: [
+            "Launched unified integration pipeline adopted by 80% of customers.",
+            "Reduced auditor turnaround time by 40% through fetch-based workflows.",
+          ],
+        },
+        {
+          title: "Software Engineering Intern",
+          duration: "Summer 2016",
+          summary:
+            "Built enterprise-grade access control and authentication tools using Java and Angular for Fortune 500 clients.",
+          bullets: [
+            "Launched unified integration pipeline adopted by 80% of customers.",
+            "Reduced auditor turnaround time by 40% through fetch-based workflows.",
+          ],
+        },
+      ],
+    },
+    {
+      company: "Moyer Auto Group",
+      roles: [
+        {
+          title: "Software Engineering Intern",
+          duration: "Summer 2015",
+          summary:
+            "Built enterprise-grade access control and authentication tools using Java and Angular for Fortune 500 clients.",
+          bullets: [
+            "Launched unified integration pipeline adopted by 80% of customers.",
+            "Reduced auditor turnaround time by 40% through fetch-based workflows.",
+          ],
+        },
+      ],
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans">
+      <Head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      <main className="max-w-4xl mx-auto px-6 py-20">
+        <section className="flex items-center mb-16">
+          <div className="mr-8">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              q
+              src="https://avatars.githubusercontent.com/u/40469512?v=4"
+              alt="James Fletcher"
+              width={128}
+              height={128}
+              className="rounded-full object-cover"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+          </div>
+          <div>
+            <h1 className="text-5xl font-bold mb-2">Hi, I’m James Fletcher</h1>
+            <p className="text-lg italic text-gray-600 dark:text-gray-300">
+              “{randomQuote.quote}” —{" "}
+              <span className="not-italic">{randomQuote.author}</span>
+            </p>
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-3xl font-semibold mb-6">Employment</h2>
+          <ul className="space-y-6">
+            {jobs.map((job, idx) => (
+              <li
+                key={idx}
+                className="border p-4 rounded-lg hover:shadow-md transition font-mono text-sm sm:text-base"
+              >
+                {/* Company */}
+                <div
+                  className="uppercase pb-2 underline text-xl font-semibold tracking-wide text-gray-700 dark:text-gray-100 mb-1"
+                  style={{ fontFamily: "'Montserrat', sans-serif" }}
+                >
+                  {job.company}
+                </div>
+                {/* Roles */}
+                <ul className="space-y-6">
+                  {job.roles.map((role, rIdx) => (
+                    <li key={rIdx}>
+                      <div className="flex justify-between flex-col sm:flex-row sm:items-start mb-2">
+                        <p className="text-green-500 dark:text-green-650">
+                          // {role.title}
+                        </p>
+                        <p className="text-gray-500 dark:text-gray-400 whitespace-nowrap mt-1 sm:mt-0">
+                          {role.duration}
+                        </p>
+                      </div>
+                      {/* Summary (outside blockquote) */}
+                      <p className="text-gray-600 dark:text-gray-300 font-sans mb-2">
+                        {role.summary}
+                      </p>
+
+                      {/* Bullets (blockquote style) */}
+                      <div className="border-l-4 border-gray-300 dark:border-gray-600 pl-4 text-gray-700 dark:text-gray-300 font-sans space-y-2">
+                        {role.bullets.map((point, pIdx) => (
+                          <p key={pIdx}>&gt; {point}</p>
+                        ))}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-3xl font-semibold mb-6">Projects</h2>
+          <ul className="space-y-4">
+            <li className="border p-4 rounded-lg hover:shadow-lg transition">
+              <a
+                href="#"
+                className="text-blue-600 hover:underline font-semibold"
+              >
+                Project One
+              </a>
+              <p className="mt-1 text-gray-700 dark:text-gray-300">
+                Description of Project One.
+              </p>
+            </li>
+            <li className="border p-4 rounded-lg hover:shadow-lg transition">
+              <a
+                href="#"
+                className="text-blue-600 hover:underline font-semibold"
+              >
+                Project Two
+              </a>
+              <p className="mt-1 text-gray-700 dark:text-gray-300">
+                Description of Project Two.
+              </p>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-3xl font-semibold mb-6">Contact</h2>
+          <p>
+            You can find me on{" "}
+            <a
+              href="https://github.com/Fletcher3195"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline"
+            >
+              GitHub
+            </a>{" "}
+            or{" "}
+            <a
+              href="https://linkedin.com/in/fletcher3195"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline"
+            >
+              LinkedIn
+            </a>
+            .
+          </p>
+          <p className="mt-2">
+            Or email me at{" "}
+            <a href="mailto:fletcher.3195@gmail.com" className="underline">
+              fletcher.3195@gmail.com
+            </a>
+            .
+          </p>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
